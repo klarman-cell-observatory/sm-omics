@@ -25,6 +25,8 @@ Each sample processed in this spatial study has been annotated into smaller ROIs
 
 For generating spatial gene expression estimates and spatial differential expression analysis, we advise you to follow instruction at: https://github.com/tare/Splotch and cite Äijö T, Maniatis S & Vickovic S et al: Splotch: Robust estimation of aligned spatial temporal gene expression data, doi: https://doi.org/10.1101/757096
 
+For using our spatial spots alignemnts and reporting tool, please go to: https://github.com/klarman-cell-observatory/SpoTerR
+
 
 
 
