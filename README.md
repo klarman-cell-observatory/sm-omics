@@ -21,6 +21,8 @@ tag1    int
 
 Additionally, all downscaled IF images and corresponding probabilites masks have been provided (*Ab.jpb and *Ab_Probabilities.tiff) as well. 
 
+Each sample processed in this spatial study has been annotated into smaller ROIs avaialbe as *annotations.txt
+
 For generating spatial gene expression estimates and spatial differential expression analysis, we advise you to follow instruction at: https://github.com/tare/Splotch and cite Äijö T, Maniatis S & Vickovic S et al: Splotch: Robust estimation of aligned spatial temporal gene expression data, doi: https://doi.org/10.1101/757096
 
 
