@@ -27,7 +27,7 @@ Additionally, all downscaled IF images and corresponding probabilites masks have
 
 Each sample processed in this spatial study has been annotated into smaller ROIs avaialbe as *annotations.tsv
 
-For generating spatial gene expression estimates and spatial differential expression analysis, we advise you to follow instruction at: https://github.com/tare/Splotch and cite Äijö T, Maniatis S & Vickovic S et al: Splotch: Robust estimation of aligned spatial temporal gene expression data, doi: https://doi.org/10.1101/757096
+For generating spatial gene expression estimates and spatial differential expression analysis, we advise you to follow instruction at: https://github.com/tare/Splotch and cite Äijö T, Maniatis S & Vickovic S et al: Splotch: Robust estimation of aligned spatial temporal gene expression data, doi: https://doi.org/10.1101/757096. In order to ease use, we have made the complete Splotch workflow avaiable trough Broad's Firecloud platform: https://portal.firecloud.org/?return=firecloud#methods/jgoud/splotch/58.
 
 For using our spatial spots alignemnts and reporting tool, please go to our SpoTteR repository: https://github.com/klarman-cell-observatory/SpoTerR
 
