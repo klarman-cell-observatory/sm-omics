@@ -4,7 +4,7 @@
 # set warnings
 options(warn=-1)
 
-# raw data files needed to run are avaialbe at SCP: https://singlecell.broadinstitute.org/single_cell/study/SCP979/
+# raw data files needed to run are available at SCP: https://singlecell.broadinstitute.org/single_cell/study/SCP979/
 # please download if_permeabilization.zip and he_permeabilization.zip
 
 # functions: gets local minima

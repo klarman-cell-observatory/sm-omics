@@ -4,7 +4,7 @@
 # set warnings
 options(warn=-1)
 
-# raw data files needed to run are avaialbe at SCP: https://singlecell.broadinstitute.org/single_cell/study/SCP979/
+# raw data files needed to run are available at SCP: https://singlecell.broadinstitute.org/single_cell/study/SCP979/
 # please download spotter_testing_speed_results.xlsx, spotter_processing.zip, aligner_output.zip, stdetector_results.zip
 
 # load libraries
