@@ -4,9 +4,8 @@ The spatial organization of cells and molecules plays a key role in tissue funct
 
 Please cite: Vickovic S & Loetstedt B et al: SM-Omics: An automated platform for high-throughput spatial multi-omics, doi: https://doi.org/10.1101/2020.10.14.338418
 
-# Tech workflow
-![github-small](https://github.com/broadinstitute/hdst/blob/master/hdst.png)
-
+# Automation SM-Omics tech workflow
+![github-small](https://github.com/klarman-cell-observatory/sm-omics/blob/master/automation.png)
 
 The raw and processed files needed to recreate all the results in this study are avaialbe at: https://singlecell.broadinstitute.org/single_cell/study/SCP979/
 
