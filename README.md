@@ -11,10 +11,10 @@ The raw and processed files needed to recreate all the results in this study are
 
 All processed gene expression files have be provided in the following format (*stdata_under_tissue_IDs.txt):\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x_y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ...\
-gene1&nbsp;&nbsp;{int}
+gene1&nbsp;{int}
 
 All processed IF expression files have be provided in the following format (*stifs_under_tissue_IDs.txt):\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x_y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ...\ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x_y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ... \ 
 ab1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{int}
 
 All processed antibody-tag expression files have be provided in the following format (*stabs_under_tissue_IDs.txt):\
