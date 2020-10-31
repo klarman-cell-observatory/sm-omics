@@ -17,15 +17,15 @@ gene1   {int}\
 .
 
 All processed IF expression files have be provided in the following format (*stifs_under_tissue_IDs.txt):\
-         x_y    ... \
-ab1     int\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x_y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ... \
+ab1     {int}\
 .\
 .\
 .
 
 All processed antibody-tag expression files have be provided in the following format (*stabs_under_tissue_IDs.txt):\
-         x_y    ...  \      
-tag1    int\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x_y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ... \     
+tag1    {int}\
 .\
 .\
 .
