@@ -10,7 +10,7 @@ Please cite: Vickovic S & Loetstedt B et al: SM-Omics: An automated platform for
 The raw and processed files needed to recreate all the results in this study are available at: https://singlecell.broadinstitute.org/single_cell/study/SCP979/
 
 All processed gene expression files have be provided in the following format (*stdata_under_tissue_IDs.txt):\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x_y    ... \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x_y    ... \
 gene1   {int}\
 .\
 .\
