@@ -24,7 +24,7 @@ For generating spatial gene expression estimates and spatial differential expres
 For recreating images in the paper, we have made the following code avaiable: [genes](./surface_reactions) and [tags](./surface_reactions) with correspoding python requirements listed in the same folders.
 
 ### Correlating genes and protein expression
-
+For correlating gene to IF protein expression, please refer to the this [code and examples](./IF_vs_mRNA_signals).
 
 ### pyenv
 Python env requirements have been listed in the [yml](./smomics_env.yml) file. 
