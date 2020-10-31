@@ -26,6 +26,12 @@ For recreating images in the paper, we have made the following code avaiable: [g
 ### Correlating genes and protein expression
 
 
+### pyenv
+Python env requirements have been listed in the [yml](./smomics_env.yml) file. 
+
+### Renv
+Renv requirements and sessionInfo has been listed in the [sessions file](./sessionInfo.txt) file. 
+
 
 
 
