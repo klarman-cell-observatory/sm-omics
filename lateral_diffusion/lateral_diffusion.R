@@ -1,8 +1,11 @@
 ###This script runs estimates on Cy3-based lateral diffusion in SM-Omics or ST based data.
+## This script recreates figures FigS1: F-G in SM-Omics: An automated platform for high-throughput spatial multi-omics; doi: https://doi.org/10.1101/2020.10.14.338418 
+
+# set warnings
 options(warn=-1)
 
 # raw data files needed to run are avaialbe at SCP: https://singlecell.broadinstitute.org/single_cell/study/SCP979/
-# please download if_permeabilization.zop and he_permeabilization.zip
+# please download if_permeabilization.zip and he_permeabilization.zip
 
 # functions: gets local minima
 inflect <- function(x, threshold = 1){
