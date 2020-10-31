@@ -2,14 +2,14 @@
 
 The spatial organization of cells and molecules plays a key role in tissue function in homeostasis and disease. Spatial Transcriptomics (ST) has recently emerged as a key technique to capture and positionally barcode RNAs directly in tissues. Here, we advance the application of ST at scale, by presenting Spatial Multiomics (SM-Omics) as a fully automated high-throughput platform for combined and spatially resolved transcriptomics and antibody-based proteomics. 
 
-Please cite: Vickovic S & Loetstedt B et al: [SM-Omics: An automated platform for high-throughput spatial multi-omics](doi: https://doi.org/10.1101/2020.10.14.338418)
+Please cite: Vickovic S & Loetstedt B et al: [SM-Omics: An automated platform for high-throughput spatial multi-omics](https://doi.org/10.1101/2020.10.14.338418)
 
 ### Automation SM-Omics tech workflow
 ![github-small](https://github.com/klarman-cell-observatory/sm-omics/blob/master/automation.png)
 Illustration kindly made by Ania Hupalowska.
 
 ### Data availability
-The raw and processed sequencing and image files needed to recreate all the results in this study are available at: https://singlecell.broadinstitute.org/single_cell/study/SCP979/
+The raw and processed sequencing and image files needed to recreate all the results in this study have been made avaiable at [Broad's Sincel Cell Portal](https://singlecell.broadinstitute.org/single_cell/study/SCP979/).
 
 For all file descriptions and metadata, please refer to: metadata.xlsx
 
