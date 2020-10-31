@@ -6,6 +6,7 @@ Please cite: Vickovic S & Loetstedt B et al: SM-Omics: An automated platform for
 
 # Automation SM-Omics tech workflow
 ![github-small](https://github.com/klarman-cell-observatory/sm-omics/blob/master/automation.png)
+Illustration kindly made by Ania Hupalowska.
 
 The raw and processed files needed to recreate all the results in this study are available at: https://singlecell.broadinstitute.org/single_cell/study/SCP979/
 
