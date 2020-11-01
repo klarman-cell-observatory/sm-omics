@@ -16,7 +16,7 @@ For all file descriptions and metadata, please refer to: metadata.xlsx
 ### Data pre-processing
 Initial sequncing data processing was performed with ST Pipeline ([v.1.3.1](https://github.com/SpatialTranscriptomicsResearch/st_pipeline/releases/tag/1.3.1)). For IF image pre-processing, either of Cy3 spatial gene expression footprints or traditional IFs, please check under [footprints](./surface_reactions) and [ifs](./ifs). 
 
-For using our spatial spots alignemnts and reporting tool, please go to our [SpoTteR repository](https://github.com/klarman-cell-observatory/SpoTerR).
+For using our spatial spots alignemnts and reporting tool, please go to our [SpoTteR repository](https://github.com/klarman-cell-observatory/SpoTerR). For speed and accuracy tests, please check out our code [here](./spotter_testing).
 
 ### Spatial expression estimates using Splotch
 For generating spatial gene expression estimates and spatial differential expression analysis, we advise you to follow instruction at: https://github.com/tare/Splotch and cite Äijö T, Maniatis S & Vickovic S et al: Splotch: Robust estimation of aligned spatial temporal gene expression data, doi: https://doi.org/10.1101/757096. In order to ease use, we have made the complete Splotch workflow available trough [Broad's Firecloud platform](https://portal.firecloud.org/?return=firecloud#methods/jgoud/splotch/58).
