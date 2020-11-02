@@ -11,7 +11,7 @@ Illustration kindly made by Ania Hupalowska.
 ### Data availability
 The raw and processed sequencing and image files needed to recreate all the results in this study have been made avaiable at [Broad's Sincel Cell Portal](https://singlecell.broadinstitute.org/single_cell/study/SCP979/).
 
-For all file descriptions and metadata, please refer to: metadata.xlsx
+For all file descriptions and metadata, please refer to: [metadata](metadata.xlsx).
 
 ### Data pre-processing
 Initial sequncing data processing was performed with ST Pipeline ([v.1.3.1](https://github.com/SpatialTranscriptomicsResearch/st_pipeline/releases/tag/1.3.1)). For IF image pre-processing, either of Cy3 spatial gene expression footprints or traditional IFs, please check under [footprints](./surface_reactions) and [ifs](./ifs). 
