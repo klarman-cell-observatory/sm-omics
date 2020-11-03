@@ -21,7 +21,7 @@ For using our spatial spots alignemnts and reporting tool, please go to our [Spo
 ### Spatial expression estimates using Splotch
 For generating spatial gene expression estimates and spatial differential expression analysis, we advise you to follow instruction at: https://github.com/tare/Splotch and cite Äijö T, Maniatis S & Vickovic S et al: Splotch: Robust estimation of aligned spatial temporal gene expression data, doi: https://doi.org/10.1101/757096. In order to ease use, we have made the complete Splotch workflow available trough [Broad's Firecloud platform](https://portal.firecloud.org/?return=firecloud#methods/jgoud/splotch/58).
 
-For recreating images in the paper, we have made the following code available: [genes](./splotch_genes_visualization) and [tags](./surface_reactions) with correspoding python requirements listed in the same folders.
+For recreating images in the paper, we have made the following code available: [genes](./splotch_genes_visualization) and [tags](./surface_reactions) with correspoding python requirements listed in the same folders. To recreate enrichment heatmaps per spatial ROI, please go to [heatmaps](./enrichments).
 
 ### Correlating genes and protein expression
 For correlating gene to IF protein expression, please refer to the this [code and examples](./IF_vs_mRNA_signals).
