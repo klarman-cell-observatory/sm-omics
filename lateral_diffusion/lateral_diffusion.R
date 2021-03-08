@@ -7,6 +7,9 @@ options(warn=-1)
 # raw data files needed to run are available at SCP: https://singlecell.broadinstitute.org/single_cell/study/SCP979/
 # please download if_permeabilization.zip and he_permeabilization.zip
 
+# set wd to where your downloaded data is
+setwd("../../smomics_data")
+
 # functions: gets local minima
 inflect <- function(x, threshold = 1){
   up   <- sapply(1:threshold, function(n) c(x[-(seq(n))], rep(NA, n)))
@@ -319,3 +322,4 @@ abline(v=mean(mrg_bravo), col ="red")
 abline(v=sd(mrg_bravo), col ="red", lty = 2)
 abline(v=-sd(mrg_bravo), col ="red", lty = 2)
 #dev.off()
+

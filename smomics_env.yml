@@ -1,4 +1,3 @@
-name: stenv3
 channels:
   - bioconda
   - anaconda
@@ -270,4 +269,3 @@ dependencies:
     - umap-learn==0.4.6
     - xarray==0.15.1
     - yarl==1.4.2
-prefix: /Users/svickovi/miniconda3/envs/stenv3
