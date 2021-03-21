@@ -9,7 +9,7 @@ Please cite: Vickovic S & Loetstedt B et al: [SM-Omics: An automated platform fo
 Illustration kindly made by Ania Hupalowska.
 
 ### Data availability
-The raw and processed sequencing and image files needed to recreate all the results in this study have been made avaiable at [Broad's Sincel Cell Portal](https://singlecell.broadinstitute.org/single_cell/study/SCP979/).
+The raw and processed sequencing and image files needed to recreate all the results in this study have been made avaiable at [Broad's Single Cell Portal](https://singlecell.broadinstitute.org/single_cell/study/SCP979/).
 
 For all file descriptions and metadata, please refer to: [metadata](metadata.xlsx).
 
