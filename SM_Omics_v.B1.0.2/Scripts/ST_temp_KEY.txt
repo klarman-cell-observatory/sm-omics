@@ -1,0 +1,13 @@
+\\need_tips 
+\\col 
+\\used_col 
+\\Nunc_location
+\\head_mode
+\\columns_samples
+\\tips_on_loc
+\\tips_off_loc
+\\spri_case
+\\protocol_testing
+\\tipBox
+\\Collection_location
+\\Destination_location

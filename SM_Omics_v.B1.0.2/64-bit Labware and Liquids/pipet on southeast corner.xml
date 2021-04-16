@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='ASCII' ?>
+<Velocity11 file='V11Object' md5sum='20311e7503e4cb2d2809792c77566ad0' version='1.0' >
+	<ObjectInstance >
+		<BaseObjectDescription BackEndRoot='C:\VWorks Workspace\VWorks\Pipette Techniques\' BackEndType='1' ObjectNamesAreCaseSensitive='0' ObjectPlural='Techniques' ObjectType='Technique' objectplural='techniques' objecttype='technique' >
+			<Categories >
+				<ObjectParameterCategory Description='Lists the pipettors for which high-level techniques are available.  If only one pipettor is available, it will be selected by default.' Name='Available Pipettors' >
+					<Parameters >
+						<Parameter Description='Selecting this pipettor type will display the possible high-level techniques available.' Hide_if='Const(1)' Name='Bravo' Scriptable='1' Style='2' Type='0' Value='0' />
+					</Parameters>
+				</ObjectParameterCategory>
+				<ObjectParameterCategory Description='Allows for pipette operations away from the well center.' Name='X/Y Offset Pipetting' >
+					<Parameters >
+						<Parameter Description='Distance from well center in east/west direction as a percentage of well radius.  +100% is the east side of the well, -100% is the west side of the well, and 0% is the center of the well.  The user should ensure that the well diameter is set correctly in the labware definitions of plates to be used with an offset.  Also, setting values close to 100 or -100 can lead to tip crashes if the plate is not positioned properly on the location.' Name='East/west offset' Scriptable='1' Style='0' Type='12' Units='%' Value='60' >
+							<Ranges >
+								<Range Value='-100' />
+								<Range Value='100' />
+							</Ranges>
+						</Parameter>
+						<Parameter Description='Distance from well center in north/south direction as a percentage of well radius.  +100% is the north side of the well, -100% is the south side of the well, and 0% is the center of the well.  The user should ensure that the well diameter is set correctly in the labware definitions of plates to be used with an offset.  Also, setting values close to 100 or -100 can lead to tip crashes if the plate is not positioned properly on the location.' Name='North/south offset' Scriptable='1' Style='0' Type='12' Units='%' Value='-35' >
+							<Ranges >
+								<Range Value='-100' />
+								<Range Value='100' />
+							</Ranges>
+						</Parameter>
+					</Parameters>
+				</ObjectParameterCategory>
+			</Categories>
+		</BaseObjectDescription>
+	</ObjectInstance>
+</Velocity11>

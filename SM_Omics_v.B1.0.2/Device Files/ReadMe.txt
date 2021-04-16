@@ -1,0 +1,1 @@
+Built for Bravo with 2 CPACs at 4 and 6, no shaker, Alpaqua 96-post magnet at position 7, BenchCel 2R, and NGS MiniHub

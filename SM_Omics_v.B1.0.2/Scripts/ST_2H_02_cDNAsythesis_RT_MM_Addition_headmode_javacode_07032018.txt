@@ -1,0 +1,20 @@
+update_status("Adding RT Master Mix")
+
+//if 1, 3,2 col, take from tips_on_loc from previous protocol (but tips_on_loc modified in previous subprocess, add new temp variable to store in startup)
+//otherwise, left hand side of box will still have tips and take from col 1
+if(columns_samples == 3){
+   tips_on_loc = 6
+   tips_off_loc = 6
+}
+else if(columns_samples == 2){
+   tips_on_loc = 4
+   tips_on_loc = 4
+}
+else if (columns_samples == 1){
+   tips_on_loc = 3
+   tips_off_loc = 3
+}
+else{
+tips_on_loc = 0
+tips_off_loc =0
+}

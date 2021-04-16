@@ -1,0 +1,13 @@
+0
+8
+8
+Cassette2Slot5
+3,3,8,2
+2
+5
+5
+4
+0
+4
+Cassette2Slot4
+Cassette1Slot3
