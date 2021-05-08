@@ -11,10 +11,12 @@ options(warn=-1)
 library(scales)
 library(ggplot2)
 library(viridis)
+library(coin)
 
 # List files
+setwd("../../smomics_data")
 fl = list.files("./", "*signals.csv")
-
+fl
 # Plot
 #pdf("Part0_replication_C1_vs_C2.pdf", useDingbats = F)
 # par(mai=rep(1,1,1,1)) # no margins
@@ -41,9 +43,15 @@ for (f in fl){
       hist(signals1, ylim=c(0, mx), col = alpha("red", 0.2), main = paste(fl[i],fl[i+1], sep="\n"), breaks = 50)
       hist(signals2, ylim=c(0, mx),  col = alpha("blue", 0.2), add = T, breaks = 50)
       
-      # print names
-      print(paste(i,fl[i],fl[i+1], wilcox.test(signals1, signals2, var.equal=TRUE)$p.value, sep =" "))
+      # collect data for perm-test
+      x1 = h1
+      y1 = h2
+      DV <- c(h1, h2)
+      IV <- factor(rep(c(fl[i], fl[i+1]), c(length(x1), length(y1))))
       
+      # print wilcoxons and perm-test results
+      print(paste(i,fl[i],fl[i+1], wilcox.test(h1, h2, var.equal=TRUE)$p.value, pvalue(DV ~ IV, distribution=approximate(B=999)), sep =" "))
+
       # collect file names
       flmnm = c(flmnm, fl[i], fl[i+1])
     }

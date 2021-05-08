@@ -172,6 +172,12 @@ abline(v=sd(mrg_bravo), col ="red", lty = 2)
 abline(v=-sd(mrg_bravo), col ="red", lty = 2)
 #dev.off()
 
+# library(coin)
+# DV <- c(x1, y1)
+# IV <- factor(rep(c("bravo", "manual"), c(length(x1), length(y1)))) #x1, y1 are the mrg values for each condition
+# pvalue(oneway_test(DV ~ IV, alternative="less", 
+#                    distribution=approximate(B=9999)))
+
 # make similar estimates for if data
 bravo_cy3_files = list.files("./if_diffusion", pattern = "Cy3") #for sm-omics IF diffution estimates ## remember to uncomment line 29
 

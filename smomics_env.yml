@@ -1,4 +1,3 @@
-name: smomics
 channels:
   - conda-forge
   - anaconda
@@ -154,5 +153,4 @@ dependencies:
     - pyarrow==3.0.0
     - xmltodict==0.12.0
     - zipfile36==0.1.3
-prefix: /Users/sanjavickovic/miniconda2/envs/smomics
 
