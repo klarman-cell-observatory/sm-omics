@@ -14,7 +14,7 @@ library(viridis)
 library(coin)
 
 # List files
-setwd("../../smomics_data")
+setwd("/Users/svickovi/Library/Mobile Documents/com~apple~CloudDocs/Desktop/smomics_data")
 fl = list.files("./", "*signals.csv")
 fl
 # Plot
@@ -44,13 +44,13 @@ for (f in fl){
       hist(signals2, ylim=c(0, mx),  col = alpha("blue", 0.2), add = T, breaks = 50)
       
       # collect data for perm-test
-      x1 = h1
-      y1 = h2
-      DV <- c(h1, h2)
+      x1 = h1$counts
+      y1 = h2$counts
+      DV <- c(x1, y1)
       IV <- factor(rep(c(fl[i], fl[i+1]), c(length(x1), length(y1))))
       
       # print wilcoxons and perm-test results
-      print(paste(i,fl[i],fl[i+1], wilcox.test(h1, h2, var.equal=TRUE)$p.value, pvalue(DV ~ IV, distribution=approximate(B=999)), sep =" "))
+      print(paste(i,fl[i],fl[i+1], wilcox.test(h1$counts, h2$counts, var.equal=TRUE)$p.value,pvalue(oneway_test(DV ~ IV, alternative="two.sided",distribution=approximate(B=9999))), sep =" "))
 
       # collect file names
       flmnm = c(flmnm, fl[i], fl[i+1])
@@ -92,8 +92,14 @@ for (i in 1:length(fl)){
   hist(signals1, ylim=c(0, mx), col = alpha("red", 0.2), main = paste(fl[a],fl[b], sep="\n"), breaks = 50)
   hist(signals2, ylim=c(0, mx),  col = alpha("blue", 0.2), add = T, breaks = 50)
   
-  # print names
-  print(paste(i,fl[a],fl[b], t.test(signals1, signals2, var.equal=TRUE)$p.value, sep =" "))
+  # collect data for perm-test
+  x1 = h1$counts
+  y1 = h2$counts
+  DV <- c(x1, y1)
+  IV <- factor(rep(c(fl[a], fl[b]), c(length(x1), length(y1))))
+  
+  # print wilcoxons and perm-test results
+  print(paste(i,fl[a],fl[b], wilcox.test(h1$counts, h2$counts, var.equal=TRUE)$p.value,pvalue(oneway_test(DV ~ IV, alternative="two.sided",distribution=approximate(B=9999))), sep =" "))
   
 }
 # dev.off()
@@ -129,8 +135,15 @@ for (i in 1:length(fl)){
   hist(signals1, ylim=c(0, mx), col = alpha("red", 0.2), main = paste(fl[a],fl[b], sep="\n"), breaks = 50)
   hist(signals2, ylim=c(0, mx),  col = alpha("blue", 0.2), add = T, breaks = 50)
   
-  # print names
-  print(paste(i,fl[a],fl[b], t.test(signals1, signals2, var.equal=TRUE)$p.value, sep =" "))
+  # collect data for perm-test
+  x1 = h1$counts
+  y1 = h2$counts
+  DV <- c(x1, y1)
+  IV <- factor(rep(c(fl[a], fl[b]), c(length(x1), length(y1))))
+  
+  # print wilcoxons and perm-test results
+  print(paste(i,fl[a],fl[b], wilcox.test(h1$counts, h2$counts, var.equal=TRUE)$p.value,pvalue(oneway_test(DV ~ IV, alternative="two.sided",distribution=approximate(B=9999))), sep =" "))
+  
   
 }
 # dev.off()
