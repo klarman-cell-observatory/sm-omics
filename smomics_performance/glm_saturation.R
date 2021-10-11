@@ -1,5 +1,6 @@
 ### Reads in molecules_saturation_curves to build a GLM #### 
 library(glmmTMB)
+library(ResourceSelection)
 options(warn=-1)
 
 # set wd
@@ -22,15 +23,6 @@ print(ht$p.value)
 # add points for fitted curve
 points(all_files$Prop_annot_reads, fitted(fit), col = 'red')
 
-# print t-test
-mx = all_files[all_files$Prop_annot_reads == max(all_files$Prop_annot_reads),]
-tt = t.test(mx[mx$Condition == unique(mx$Condition)[1],]$Unique_molecules,
-            mx[mx$Condition == unique(mx$Condition)[2],]$Unique_molecules, 
-            alternative = c("two.sided"),
-            var.equal = T)
-
-print(paste0("t-test p-val at max saturation ... ", round(tt$p.value, 4)))
-
 # Generate glmm for sm vs st (umis total per region)
 all_files = read.table(file.path(path, 'sm_st_unique_molecules_per_region.csv'), sep = ",", header = T)
 
@@ -39,16 +31,16 @@ for (region in unique(all_files$Annotated_region)){
   all_files_region = all_files[all_files$Annotated_region == region,]
   all_files_region$Unique_molecules = all_files_region$Unique_molecules/max(all_files_region$Unique_molecules)
   plot(all_files_region$Prop_annot_reads, all_files_region$Unique_molecules, col = 'black', main = region)
-
+  
   print(region)
-
+  
   # check with mixed model
   fit <- glmmTMB(Unique_molecules ~ Condition + (1|Name), weights = rep(1, nrow(all_files_region)), offset = log(Prop_annot_reads), data=all_files_region, family=family)
   summary(fit) #display result
   
   #check model fit 
   ht = hoslem.test(all_files_region$Unique_molecules, fitted(fit)) # high p-value (p>0.05) indicates no difference between model and data
-  print(ht$p.value)
+  #print(ht$p.value)
   
   # add points for fitted curve
   points(all_files_region$Prop_annot_reads, fitted(fit), col = 'red')
@@ -59,13 +51,6 @@ for (region in unique(all_files$Annotated_region)){
     print(coef(summary(fit))$cond[,1][2])
     print(coef(summary(fit))$cond[,4][2])}
   
-  # print t-test
-  mx = all_files_region[all_files_region$Prop_annot_reads == max(all_files_region$Prop_annot_reads),]
-  tt = t.test(mx[mx$Condition == unique(mx$Condition)[1],]$Unique_molecules,
-              mx[mx$Condition == unique(mx$Condition)[2],]$Unique_molecules, 
-              alternative = c("two.sided"))
-  
-  print(paste0("t-test p-val at max saturation ... ", tt$p.value))
 }
 
 # Generate glmm for sm vs visium (umis total per region)
@@ -95,14 +80,6 @@ for (region in unique(all_files$Annotated_region)){
   # add points for fitted curve
   points(all_files_region$Prop_annot_reads, fitted(fit), col = 'red')
   
-  # print t-test
-  mx = all_files_region[all_files_region$Prop_annot_reads == max(all_files_region$Prop_annot_reads),]
-  tt = t.test(mx[mx$Condition == unique(mx$Condition)[1],]$norm.uniq.mol,
-              mx[mx$Condition == unique(mx$Condition)[2],]$norm.uniq.mol, 
-              alternative = c("two.sided"))
-  
-  print(paste0("t-test p-val at max saturation ... ", tt$p.value))
-  
 }
 
 # Generate glmm for sm stainings (umis per spot inside)
@@ -131,14 +108,6 @@ for (i in 1:nrow(conds)){
   ht = hoslem.test(all_files_sub$UMI.inside, fitted(fit)) # high p-value (p>0.05) indicates no difference between model and data
   # print(ht$p.value)
   
-  # print t-test
-  mx = all_files_sub[all_files_sub$Prop_annot_reads == max(all_files_sub$Prop_annot_reads),]
-  tt = t.test(mx[mx$Condition == unique(mx$Condition)[1],]$UMI.inside,
-              mx[mx$Condition == unique(mx$Condition)[2],]$UMI.inside, 
-              alternative = c("two.sided"))
-  
-  print(paste0("t-test p-val at max saturation ... ", tt$p.value))
-  
 }
 
 # Generate glmm for sm stainings (umis per spot outside)
@@ -164,14 +133,6 @@ for (i in 1:nrow(conds)){
   ht = hoslem.test(all_files_sub$UMI.outside, fitted(fit)) # high p-value (p>0.05) indicates no difference between model and data
   # print(ht$p.value)
   
-  # print t-test
-  mx = all_files_sub[all_files_sub$Prop_annot_reads == max(all_files_sub$Prop_annot_reads),]
-  tt = t.test(mx[mx$Condition == unique(mx$Condition)[1],]$UMI.outside,
-              mx[mx$Condition == unique(mx$Condition)[2],]$UMI.outside, 
-              alternative = c("two.sided"))
-  
-  print(paste0("t-test p-val at max saturation ... ", tt$p.value))
-  
 }
 
 
@@ -190,15 +151,6 @@ hoslem.test(all_files$Genes.outside, fitted(fit)) # high p-value (p>0.05) indica
 ## add points for fitted curve
 points(all_files$Prop_annot_reads, fitted(fit), col = 'red')
 
-# print t-test
-mx = all_files[all_files$Prop_annot_reads == max(all_files$Prop_annot_reads),]
-tt = t.test(mx[mx$Condition == unique(mx$Condition)[1],]$Genes.outside,
-            mx[mx$Condition == unique(mx$Condition)[2],]$Genes.outside, 
-            alternative = c("two.sided"),
-            var.equal = T)
-
-print(paste0("t-test p-val at max saturation ... ", tt$p.value))
-
 # Generate glmm for sm vs st (genes per spot)
 all_files = read.table(file.path(path, 'sm_st_unique_genes_under_outside_tissue.csv'), sep = ",", header = T)
 all_files$Genes.inside = all_files$Genes.inside/max(all_files$Genes.inside)
@@ -213,14 +165,6 @@ hoslem.test(all_files$Genes.inside, fitted(fit)) # high p-value (p>0.05) indicat
 
 ## add points for fitted curve
 points(all_files$Prop_annot_reads, fitted(fit), col = 'red')
-
-# print t-test
-mx = all_files[all_files$Prop_annot_reads == max(all_files$Prop_annot_reads),]
-tt = t.test(mx[mx$Condition == unique(mx$Condition)[1],]$Genes.inside,
-            mx[mx$Condition == unique(mx$Condition)[2],]$Genes.inside, 
-            alternative = c("two.sided"))
-
-print(paste0("t-test p-val at max saturation ... ", tt$p.value))
 
 # Generate glmm for sm vs st (umis per spot)
 all_files = read.table(file.path(path, 'sm_st_unique_molecules_under_outside_tissue.csv'), sep = ",", header = T)
@@ -237,14 +181,6 @@ hoslem.test(all_files$UMI.inside, fitted(fit)) # high p-value (p>0.05) indicates
 ## add points for fitted curve
 points(all_files$Prop_annot_reads, fitted(fit), col = 'red')
 
-# print t-test
-mx = all_files[all_files$Prop_annot_reads == max(all_files$Prop_annot_reads),]
-tt = t.test(mx[mx$Condition == unique(mx$Condition)[1],]$UMI.inside,
-            mx[mx$Condition == unique(mx$Condition)[2],]$UMI.inside, 
-            alternative = c("two.sided"))
-
-print(paste0("t-test p-val at max saturation ... ", tt$p.value))
-
 # Generate glm for sm vs st (umis per spot)
 all_files = read.table(file.path(path, 'sm_st_unique_molecules_under_outside_tissue.csv'), sep = ",", header = T)
 all_files$UMI.outside = all_files$UMI.outside/max(all_files$UMI.outside)
@@ -259,14 +195,6 @@ hoslem.test(all_files$UMI.outside, fitted(fit)) # high p-value (p>0.05) indicate
 
 ## add points for fitted curve
 points(all_files$Prop_annot_reads, fitted(fit), col = 'red')
-
-# print t-test
-mx = all_files[all_files$Prop_annot_reads == max(all_files$Prop_annot_reads),]
-tt = t.test(mx[mx$Condition == unique(mx$Condition)[1],]$UMI.outside,
-            mx[mx$Condition == unique(mx$Condition)[2],]$UMI.outside, 
-            alternative = c("two.sided"),)
-
-print(paste0("t-test p-val at max saturation ... ", tt$p.value))
 
 #repeat for sm vs visium genes per spot
 all_files = read.table(file.path(path, 'sm_visium_unique_genes_under_outside_tissue.csv'), sep = ",", header = T)
@@ -283,14 +211,6 @@ hoslem.test(all_files$Genes.inside, fitted(fit)) # high p-value (p>0.05) indicat
 ## add points for fitted curve
 points(all_files$Prop_annot_reads, fitted(fit), col = 'red')
 
-# print t-test
-mx = all_files[all_files$Prop_annot_reads == max(all_files$Prop_annot_reads),]
-tt = t.test(mx[mx$type == unique(mx$type)[1],]$Genes.inside,
-            mx[mx$type == unique(mx$type)[2],]$Genes.inside, 
-            alternative = c("two.sided"))
-
-print(paste0("t-test p-val at max saturation ... ", tt$p.value))
-
 #repeat for sm vs visium genes
 all_files = read.table(file.path(path, 'sm_visium_unique_genes_under_outside_tissue.csv'), sep = ",", header = T)
 all_files$Genes.outside = all_files$Genes.outside/max(all_files$Genes.outside)
@@ -300,20 +220,11 @@ plot(all_files$Prop_annot_reads, all_files$Genes.outside, col = 'black')
 fit <- glmmTMB(Genes.outside ~ type + (1|Name), offset = log(Prop_annot_reads), data=all_files, family=family)
 summary(fit) #display results
 
-
 #check model fit 
 hoslem.test(all_files$Genes.outside, fitted(fit)) # high p-value (p>0.05) indicates no difference between model and data
 
 ## add points for fitted curve
 points(all_files$Prop_annot_reads, fitted(fit), col = 'red')
-
-# print t-test
-mx = all_files[all_files$Prop_annot_reads == max(all_files$Prop_annot_reads),]
-tt = t.test(mx[mx$type == unique(mx$type)[1],]$Genes.outside,
-            mx[mx$type == unique(mx$type)[2],]$Genes.outside, 
-            alternative = c("two.sided"))
-
-print(paste0("t-test p-val at max saturation ... ", tt$p.value))
 
 #repeat for sm vs visium umis per spot
 all_files = read.table(file.path(path, 'sm_visium_unique_molecules_under_outside_tissue.csv'), sep = ",", header = T)
@@ -331,14 +242,6 @@ hoslem.test(all_files$UMI.inside, fitted(fit)) # high p-value (p>0.05) indicates
 ## add points for fitted curve
 points(all_files$Prop_annot_reads, fitted(fit), col = 'red')
 
-# print t-test
-mx = all_files[all_files$Prop_annot_reads == max(all_files$Prop_annot_reads),]
-tt = t.test(mx[mx$type == unique(mx$type)[1],]$UMI.inside,
-            mx[mx$type == unique(mx$type)[2],]$UMI.inside, 
-            alternative = c("two.sided"))
-
-print(paste0("t-test p-val at max saturation ... ", tt$p.value))
-
 #repeat for sm vs visium umis
 all_files = read.table(file.path(path, 'sm_visium_unique_molecules_under_outside_tissue.csv'), sep = ",", header = T)
 all_files$UMI.outside = all_files$UMI.outside/max(all_files$UMI.outside)
@@ -353,14 +256,6 @@ hoslem.test(all_files$UMI.outside, fitted(fit)) # high p-value (p>0.05) indicate
 
 ## add points for fitted curve
 points(all_files$Prop_annot_reads,  fitted(fit), col = 'red')
-
-# print t-test
-mx = all_files[all_files$Prop_annot_reads == max(all_files$Prop_annot_reads),]
-tt = t.test(mx[mx$type == unique(mx$type)[1],]$UMI.outside,
-            mx[mx$type == unique(mx$type)[2],]$UMI.outside, 
-            alternative = c("two.sided"))
-
-print(paste0("t-test p-val at max saturation ... ", tt$p.value))
 
 #repeat for sm vs st cancer umis per spot
 all_files = read.table(file.path(path, 'sm_st_unique_molecules_under_outside_tissue_cancer.csv'), sep = ",", header = T)
@@ -377,14 +272,6 @@ hoslem.test(all_files$UMI.inside, fitted(fit)) # high p-value (p>0.05) indicates
 ## add points for fitted curve
 points(all_files$Prop_annot_reads, fitted(fit), col = 'red')
 
-# print t-test
-mx = all_files[all_files$Prop_annot_reads == max(all_files$Prop_annot_reads),]
-tt = t.test(mx[mx$Condition == unique(mx$Condition)[1],]$UMI.inside,
-            mx[mx$Condition == unique(mx$Condition)[2],]$UMI.inside, 
-            alternative = c("two.sided"))
-
-print(paste0("t-test p-val at max saturation ... ", tt$p.value))
-
 #repeat for sm vs st cancer genes per spot
 all_files = read.table(file.path(path, 'sm_st_unique_genes_under_outside_tissue_cancer.csv'), sep = ",", header = T)
 all_files$Genes.inside = all_files$Genes.inside/max(all_files$Genes.inside)
@@ -400,10 +287,3 @@ hoslem.test(all_files$Genes.inside, fitted(fit)) # high p-value (p>0.05) indicat
 ## add points for fitted curve
 points(all_files$Prop_annot_reads, fitted(fit), col = 'red')
 
-# print t-test
-mx = all_files[all_files$Prop_annot_reads == max(all_files$Prop_annot_reads),]
-tt = t.test(mx[mx$Condition == unique(mx$Condition)[1],]$Genes.inside,
-            mx[mx$Condition == unique(mx$Condition)[2],]$Genes.inside, 
-            alternative = c("two.sided"))
-
-print(paste0("t-test p-val at max saturation ... ", tt$p.value))
