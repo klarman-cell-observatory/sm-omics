@@ -1,0 +1,1 @@
+"C:\Program Files\MySQL\MySQL Server 5.7\bin\mysql.exe" velocity11 < "C:\VWorks Workspace\NGS Option B\SpatialTranscriptomics_v.B1.0.2\Scripts\clear_inventory.sql"
