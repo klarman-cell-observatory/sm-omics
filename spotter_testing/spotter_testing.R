@@ -12,7 +12,7 @@ library(gdata)
 library(stringr)
 library(ggplot2)
 
-setwd("/Users/svickovi/Library/Mobile Documents/com~apple~CloudDocs/Desktop/ST2.0_figures/SpoTter_testing")
+setwd("/Users/sanjavickovic/Desktop/ST2.0_figures/SpoTter_testing")
 
 # read in times xls 
 times=read.xls("spotter_testing_speed_results.xlsx")
@@ -36,6 +36,9 @@ aggdata <- aggregate(times$Time, by=list(times$Sample,times$Processing_simple), 
 colnames(aggdata) = c("Sample", "Processing", "Time")
 p <- ggplot(data = aggdata, aes(x = aggdata$Processing, y = 1/aggdata$Time, na.rm = T, color = aggdata$Processing)) + geom_boxplot(outlier.colour="black", outlier.shape=16, outlier.size=2, notch=FALSE)+ theme_bw() + xlab("") + ylab("Processing time") + labs(fill = "Approach")  
 print(p )
+
+aggdata
+
 #dev.off()
 
 # print speed diff
@@ -162,6 +165,7 @@ colnames(pl) = c("Rates","Tissue","Type","Tool")
 #pdf("FN_FP_spotter_testing_boxplots.pdf", width = 5, height = 5, useDingbats = F)
 p <- ggplot(data = pl, aes(x = Tissue, y = Rates , na.rm = T, color = Tool)) + geom_boxplot(outlier.colour="black", outlier.shape=16, outlier.size=2, notch=FALSE)+ theme_bw() +facet_wrap(~Type)
 print(p)
+pl
 #dev.off()
 
 fp_mat = matrix(as.numeric(fp_sp_stat), nrow = 3)

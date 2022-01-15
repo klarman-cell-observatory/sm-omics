@@ -14,14 +14,14 @@ library(viridis)
 library(coin)
 
 # List files
-setwd("/Users/svickovi/Library/Mobile Documents/com~apple~CloudDocs/Desktop/smomics_data")
+setwd("/Users/sanjavickovic/Desktop/smomics_data")
 fl = list.files("./", "*signals.csv")
 fl
 # Plot
 #pdf("Part0_replication_C1_vs_C2.pdf", useDingbats = F)
-# par(mai=rep(1,1,1,1)) # no margins
+#par(mai=rep(1,1,1,1)) # no margins
 flmnm=""
-layout(matrix(1:12, ncol=3, byrow=TRUE))
+#layout(matrix(1:12, ncol=3, byrow=TRUE))
 i=0
 for (f in fl){
   i=i+1
@@ -40,8 +40,8 @@ for (f in fl){
       if (max(h1$counts)>max(h2$counts)) mx=max(h1$counts) else mx=max(h2$counts)
       
       # plot histogram
-      hist(signals1, ylim=c(0, mx), col = alpha("red", 0.2), main = paste(fl[i],fl[i+1], sep="\n"), breaks = 50)
-      hist(signals2, ylim=c(0, mx),  col = alpha("blue", 0.2), add = T, breaks = 50)
+      #hist(signals1, ylim=c(0, mx), col = alpha("red", 0.2), main = paste(fl[i],fl[i+1], sep="\n"), breaks = 50)
+      #hist(signals2, ylim=c(0, mx),  col = alpha("blue", 0.2), add = T, breaks = 50)
       
       # collect data for perm-test
       x1 = h1$counts
@@ -50,7 +50,7 @@ for (f in fl){
       IV <- factor(rep(c(fl[i], fl[i+1]), c(length(x1), length(y1))))
       
       # print wilcoxons and perm-test results
-      print(paste(i,fl[i],fl[i+1], wilcox.test(h1$counts, h2$counts, var.equal=TRUE)$p.value,pvalue(oneway_test(DV ~ IV, alternative="two.sided",distribution=approximate(B=9999))), sep =" "))
+      print(paste(i,fl[i],fl[i+1], wilcox.test(h1$counts, h2$counts, var.equal=TRUE)$p.value))#,pvalue(oneway_test(DV ~ IV, alternative="two.sided",distribution=approximate(B=9999))), sep =" "))
 
       # collect file names
       flmnm = c(flmnm, fl[i], fl[i+1])
@@ -64,8 +64,10 @@ flmnm = flmnm[-1]
 # Plot
 # pdf("Part0_replication_Reps.pdf", useDingbats = F)
 #par(mai=rep(1,1,1,1)) # no margins
-layout(matrix(1:12, ncol=3, byrow=TRUE))
-fl = list.files("./", glob2rx("*Rep*signals.csv"))
+#layout(matrix(1:12, ncol=3, byrow=TRUE))
+fl = list.files("./", glob2rx("*signals.csv"))
+fl = fl[grepl("Pos+\\d+_Cy3.C2", list.files("./", glob2rx("*signals.csv")))]
+fl = fl[1:3]
 
 for (i in 1:length(fl)){
   
@@ -89,8 +91,8 @@ for (i in 1:length(fl)){
   if (max(h1$counts)>max(h2$counts)) mx=max(h1$counts) else mx=max(h2$counts)
   
   # plot histogram
-  hist(signals1, ylim=c(0, mx), col = alpha("red", 0.2), main = paste(fl[a],fl[b], sep="\n"), breaks = 50)
-  hist(signals2, ylim=c(0, mx),  col = alpha("blue", 0.2), add = T, breaks = 50)
+  #hist(signals1, ylim=c(0, mx), col = alpha("red", 0.2), main = paste(fl[a],fl[b], sep="\n"), breaks = 50)
+  #hist(signals2, ylim=c(0, mx),  col = alpha("blue", 0.2), add = T, breaks = 50)
   
   # collect data for perm-test
   x1 = h1$counts
@@ -99,7 +101,7 @@ for (i in 1:length(fl)){
   IV <- factor(rep(c(fl[a], fl[b]), c(length(x1), length(y1))))
   
   # print wilcoxons and perm-test results
-  print(paste(i,fl[a],fl[b], wilcox.test(h1$counts, h2$counts, var.equal=TRUE)$p.value,pvalue(oneway_test(DV ~ IV, alternative="two.sided",distribution=approximate(B=9999))), sep =" "))
+  print(paste(i,fl[a],fl[b], wilcox.test(h1$counts, h2$counts, var.equal=TRUE)$p.value))#,pvalue(oneway_test(DV ~ IV, alternative="two.sided",distribution=approximate(B=9999))), sep =" "))
   
 }
 # dev.off()
@@ -107,9 +109,9 @@ for (i in 1:length(fl)){
 # Plot
 # pdf("Part0_replication_Runs.pdf", useDingbats = F)
 #par(mai=rep(1,1,1,1)) # no margins
-layout(matrix(1:12, ncol=3, byrow=TRUE))
+#layout(matrix(1:12, ncol=3, byrow=TRUE))
 fl = list.files("./", glob2rx("*Rep*signals.csv"))
-
+fl
 for (i in 1:length(fl)){
   
   if (i==length(fl)){
@@ -132,8 +134,8 @@ for (i in 1:length(fl)){
   if (max(h1$counts)>max(h2$counts)) mx=max(h1$counts) else mx=max(h2$counts)
   
   # plot histogram
-  hist(signals1, ylim=c(0, mx), col = alpha("red", 0.2), main = paste(fl[a],fl[b], sep="\n"), breaks = 50)
-  hist(signals2, ylim=c(0, mx),  col = alpha("blue", 0.2), add = T, breaks = 50)
+  #hist(signals1, ylim=c(0, mx), col = alpha("red", 0.2), main = paste(fl[a],fl[b], sep="\n"), breaks = 50)
+  #hist(signals2, ylim=c(0, mx),  col = alpha("blue", 0.2), add = T, breaks = 50)
   
   # collect data for perm-test
   x1 = h1$counts
@@ -142,7 +144,7 @@ for (i in 1:length(fl)){
   IV <- factor(rep(c(fl[a], fl[b]), c(length(x1), length(y1))))
   
   # print wilcoxons and perm-test results
-  print(paste(i,fl[a],fl[b], wilcox.test(h1$counts, h2$counts, var.equal=TRUE)$p.value,pvalue(oneway_test(DV ~ IV, alternative="two.sided",distribution=approximate(B=9999))), sep =" "))
+  print(paste(i,fl[a],fl[b], wilcox.test(h1$counts, h2$counts, var.equal=TRUE)$p.value))#,pvalue(oneway_test(DV ~ IV, alternative="two.sided",distribution=approximate(B=9999))), sep =" "))
   
   
 }
