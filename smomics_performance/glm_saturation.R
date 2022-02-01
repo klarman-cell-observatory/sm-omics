@@ -135,8 +135,7 @@ for (i in 1:nrow(conds)){
   
 }
 
-
-# Generate glmm for sm vs st (genes per spot)
+# Generate glmm for sm vs st (genes outside per spot)
 all_files = read.table(file.path(path, 'sm_st_unique_genes_under_outside_tissue.csv'), sep = ",", header = T)
 all_files$Genes.outside = all_files$Genes.outside/max(all_files$Genes.outside)
 plot(all_files$Prop_annot_reads, all_files$Genes.outside, col = 'black')
@@ -151,7 +150,7 @@ hoslem.test(all_files$Genes.outside, fitted(fit)) # high p-value (p>0.05) indica
 ## add points for fitted curve
 points(all_files$Prop_annot_reads, fitted(fit), col = 'red')
 
-# Generate glmm for sm vs st (genes per spot)
+# Generate glmm for sm vs st (genes inside per spot)
 all_files = read.table(file.path(path, 'sm_st_unique_genes_under_outside_tissue.csv'), sep = ",", header = T)
 all_files$Genes.inside = all_files$Genes.inside/max(all_files$Genes.inside)
 plot(all_files$Prop_annot_reads, all_files$Genes.inside, col = 'black')
@@ -166,7 +165,7 @@ hoslem.test(all_files$Genes.inside, fitted(fit)) # high p-value (p>0.05) indicat
 ## add points for fitted curve
 points(all_files$Prop_annot_reads, fitted(fit), col = 'red')
 
-# Generate glmm for sm vs st (umis per spot)
+# Generate glmm for sm vs st (umis inside per spot)
 all_files = read.table(file.path(path, 'sm_st_unique_molecules_under_outside_tissue.csv'), sep = ",", header = T)
 all_files$UMI.inside = all_files$UMI.inside/max(all_files$UMI.inside)
 plot(all_files$Prop_annot_reads, all_files$UMI.inside, col = 'black')
@@ -181,7 +180,7 @@ hoslem.test(all_files$UMI.inside, fitted(fit)) # high p-value (p>0.05) indicates
 ## add points for fitted curve
 points(all_files$Prop_annot_reads, fitted(fit), col = 'red')
 
-# Generate glm for sm vs st (umis per spot)
+# Generate glm for sm vs st (umis outside per spot)
 all_files = read.table(file.path(path, 'sm_st_unique_molecules_under_outside_tissue.csv'), sep = ",", header = T)
 all_files$UMI.outside = all_files$UMI.outside/max(all_files$UMI.outside)
 plot(all_files$Prop_annot_reads, all_files$UMI.outside, col = 'black')
@@ -196,7 +195,7 @@ hoslem.test(all_files$UMI.outside, fitted(fit)) # high p-value (p>0.05) indicate
 ## add points for fitted curve
 points(all_files$Prop_annot_reads, fitted(fit), col = 'red')
 
-#repeat for sm vs visium genes per spot
+#repeat for sm vs visium genes inside per spot
 all_files = read.table(file.path(path, 'sm_visium_unique_genes_under_outside_tissue.csv'), sep = ",", header = T)
 all_files$Genes.inside = all_files$Genes.inside/max(all_files$Genes.inside)
 plot(all_files$Prop_annot_reads, all_files$Genes.inside, col = 'black')
@@ -211,7 +210,7 @@ hoslem.test(all_files$Genes.inside, fitted(fit)) # high p-value (p>0.05) indicat
 ## add points for fitted curve
 points(all_files$Prop_annot_reads, fitted(fit), col = 'red')
 
-#repeat for sm vs visium genes
+#repeat for sm vs visium outsdie genes
 all_files = read.table(file.path(path, 'sm_visium_unique_genes_under_outside_tissue.csv'), sep = ",", header = T)
 all_files$Genes.outside = all_files$Genes.outside/max(all_files$Genes.outside)
 plot(all_files$Prop_annot_reads, all_files$Genes.outside, col = 'black')
@@ -226,7 +225,7 @@ hoslem.test(all_files$Genes.outside, fitted(fit)) # high p-value (p>0.05) indica
 ## add points for fitted curve
 points(all_files$Prop_annot_reads, fitted(fit), col = 'red')
 
-#repeat for sm vs visium umis per spot
+#repeat for sm vs visium umis inside per spot
 all_files = read.table(file.path(path, 'sm_visium_unique_molecules_under_outside_tissue.csv'), sep = ",", header = T)
 all_files$UMI.inside = all_files$UMI.inside/max(all_files$UMI.inside)
 plot(all_files$Prop_annot_reads, all_files$UMI.inside, col = 'black')
@@ -242,7 +241,7 @@ hoslem.test(all_files$UMI.inside, fitted(fit)) # high p-value (p>0.05) indicates
 ## add points for fitted curve
 points(all_files$Prop_annot_reads, fitted(fit), col = 'red')
 
-#repeat for sm vs visium umis
+#repeat for sm vs visium outside umis
 all_files = read.table(file.path(path, 'sm_visium_unique_molecules_under_outside_tissue.csv'), sep = ",", header = T)
 all_files$UMI.outside = all_files$UMI.outside/max(all_files$UMI.outside)
 plot(all_files$Prop_annot_reads, all_files$UMI.outside, col = 'black')
